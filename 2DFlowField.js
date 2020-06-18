@@ -58,15 +58,15 @@ function drawArrow(x, y, length, gradientPosition)
 
 let arrowLength = 20;
 let spaceBetween = arrowLength / 4;
-let rows = (ctx.canvas.height - (arrowLength + spaceBetween)) / ((arrowLength + spaceBetween) * 2);//19;
-let cols = (ctx.canvas.width - (arrowLength + spaceBetween)) / ((arrowLength + spaceBetween) * 2);//39;
+let rows = (ctx.canvas.height - (arrowLength + spaceBetween)) / (arrowLength + spaceBetween);//19;
+let cols = (ctx.canvas.width - (arrowLength + spaceBetween)) / (arrowLength + spaceBetween);//39;
 let amountOfArrows = rows * cols;
 for(let col = 0; col < cols; col++)
 {
     for(let row = 0; row < rows; row++)
     {
-        let currentX = arrowLength + spaceBetween + (arrowLength + spaceBetween) * 2 * col;
-        let currentY = arrowLength + spaceBetween + (arrowLength + spaceBetween) * 2 * row;
-        drawArrow(currentX, currentY, arrowLength, 1 / amountOfArrows * col * row);
+        let currentX = arrowLength + spaceBetween + (arrowLength + spaceBetween) * col;
+        let currentY = arrowLength + spaceBetween + (arrowLength + spaceBetween) * row;
+        drawArrow(currentX, currentY, arrowLength, 1 / amountOfArrows * row * col);
     }
 }
