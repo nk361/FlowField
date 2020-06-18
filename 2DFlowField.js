@@ -51,21 +51,22 @@ function drawArrow(x, y, length, gradientPosition)
     ctx.fillStyle = "rgb(" + currentColor.x + ", " + currentColor.y + ", " + currentColor.z + ")";
     ctx.beginPath();
     ctx.moveTo(x, y - length);
-    ctx.lineTo(x + 5, y - length + 10);
-    ctx.lineTo(x - 5, y - length + 10);
+    ctx.lineTo(x + length / 8, y - length + length / 4);
+    ctx.lineTo(x - length / 8, y - length + length / 4);
     ctx.fill();
 }
 
-
-let rows = 19;
-let cols = 39;
-let amountOfArrows = rows * cols;
-let arrowLength = 40;
+let arrowLength = 20;
 let spaceBetween = arrowLength / 4;
+let rows = (ctx.canvas.height - (arrowLength + spaceBetween)) / ((arrowLength + spaceBetween) * 2);//19;
+let cols = (ctx.canvas.width - (arrowLength + spaceBetween)) / ((arrowLength + spaceBetween) * 2);//39;
+let amountOfArrows = rows * cols;
 for(let col = 0; col < cols; col++)
 {
     for(let row = 0; row < rows; row++)
     {
-        drawArrow(spaceBetween + (arrowLength + spaceBetween) * col, arrowLength + spaceBetween + (arrowLength + spaceBetween) * row, arrowLength, 1 / amountOfArrows * col * row);
+        let currentX = arrowLength + spaceBetween + (arrowLength + spaceBetween) * 2 * col;
+        let currentY = arrowLength + spaceBetween + (arrowLength + spaceBetween) * 2 * row;
+        drawArrow(currentX, currentY, arrowLength, 1 / amountOfArrows * col * row);
     }
 }
