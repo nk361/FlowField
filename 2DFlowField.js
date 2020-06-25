@@ -59,6 +59,8 @@ function drawArrow(x, y, length, angle, gradientPosition) {
 }
 
 function scaleBetweenZeroAndOne(value, max, min = 0) {
+    if(value >= max - 0.00001)//float issues. If it was the same number as max, it gave 0.9999999999, instead of 1
+        return 1;
     return 1 / (max - min) * (value - min);
 }
 
